@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login do Sistema</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Login do Sistema</h1>
+
+        <form method="POST" class="form-box coluna">
+            <input type="text" name="usuario" placeholder="Usuário" required>
+            <input type="password" name="senha" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+
+        {% if erro %}
+            <p class="erro">{{ erro }}</p>
+        {% endif %}
+
+        <p class="info-login">Usuário padrão: <b>admin</b> | Senha: <b>1234</b></p>
+    </div>
+</body>
+</html>

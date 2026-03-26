@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <p class="subtitulo">Bem-vinda, {{ usuario }}!</p>
+
+        <div class="card">
+            <h2>Total de Clientes</h2>
+            <p class="numero">{{ total_clientes }}</p>
+        </div>
+
+        <div class="acoes">
+            <a href="{{ url_for('clientes') }}" class="btn">Gerenciar Clientes</a>
+            <a href="{{ url_for('logout') }}" class="btn sair">Sair</a>
+        </div>
+    </div>
+</body>
+</html>

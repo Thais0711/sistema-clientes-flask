@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Clientes</h1>
+        <p class="subtitulo">Sistema profissional para gerenciar clientes</p>
+
+        <form method="POST" class="form-box">
+            <input type="text" name="nome" placeholder="Nome do cliente" required>
+            <input type="text" name="telefone" placeholder="Telefone">
+            <input type="email" name="email" placeholder="E-mail">
+            <button type="submit">Adicionar</button>
+        </form>
+
+        <form method="GET" class="form-box">
+            <input type="text" name="busca" placeholder="Pesquisar por nome, telefone ou e-mail" value="{{ busca }}">
+            <button type="submit">Buscar</button>
+        </form>
+
+        <h2>Lista de Clientes</h2>
+
+        <ul class="lista-clientes">
+            {% for cliente in clientes %}
+                <li>
+                    <div class="cliente-info">
+                        <strong>{{ cliente[1] }}</strong>
+                        <span>📞 {{ cliente[2] if cliente[2] else 'Não informado' }}</span>
+                        <span>📧 {{ cliente[3] if cliente[3] else 'Não informado' }}</span>
+                    </div>
+
+                    <a href="{{ url_for('excluir', id=cliente[0]) }}" class="btn-excluir">Excluir</a>
+                </li>
+            {% else %}
+                <p class="vazio">Nenhum cliente cadastrado.</p>
+            {% endfor %}
+        </ul>
+
+        <div class="acoes">
+            <a href="{{ url_for('dashboard') }}" class="btn">Voltar</a>
+            <a href="{{ url_for('logout') }}" class="btn sair">Sair</a>
+        </div>
+    </div>
+</body>
+</html>
